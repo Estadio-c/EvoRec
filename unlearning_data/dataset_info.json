@@ -1,0 +1,44 @@
+{    
+    "all": {
+    "file_name": "before_all_llm.json",
+    "formatting": "sharegpt",
+    "columns": {
+        "messages": "messages"
+    },
+    "tags": {
+        "role_tag": "role",
+        "content_tag": "content",
+        "user_tag": "user",
+        "assistant_tag": "assistant",
+        "system_tag": "system"
+    }
+    },
+    "train_after_1": {
+      "file_name": "edit_after_candidate_train.json",
+      "formatting": "sharegpt",
+      "columns": {
+          "messages": "messages"
+      },
+      "tags": {
+          "role_tag": "role",
+          "content_tag": "content",
+          "user_tag": "user",
+          "assistant_tag": "assistant",
+          "system_tag": "system"
+      }
+  },
+  "train_val_1": {
+      "file_name": "edit_after_candidate_val.json",
+      "formatting": "sharegpt",
+      "columns": {
+          "messages": "messages"
+      },
+      "tags": {
+          "role_tag": "role",
+          "content_tag": "content",
+          "user_tag": "user",
+          "assistant_tag": "assistant",
+          "system_tag": "system"
+      }
+  }
+}
