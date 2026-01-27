@@ -45,8 +45,8 @@ if __name__ == '__main__':
         r.append(i.split('||'))
 
 
-    #计算edit域的性能
-    print('Ua域上的性能为')
+    # Calculate performance on edit domain
+    print('Performance on Ua domain:')
     hr_1, ndcg_1 = score(r, t, 1)
     print('hr@1:', hr_1)
     hr_3, ndcg_3 = score(r, t, 3)

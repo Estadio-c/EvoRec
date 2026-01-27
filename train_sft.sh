@@ -3,16 +3,16 @@ export WANDB_MODE=disabled
 export WANDB_DISABLED=true
 
 if [ -d "$output_dir" ] && [ "$(ls -A $output_dir)" ]; then
-    echo "文件夹 $output_dir 不为空，正在删除文件..."
+    echo "Directory $output_dir is not empty, deleting files..."
     rm -rf "$output_dir"/*
-    echo "文件夹中的所有文件已删除。"
+    echo "All files in directory deleted."
 fi
 
 
 CUDA_VISIBLE_DEVICES=0 llamafactory-cli train \
     --stage sft \
     --do_train \
-    --model_name_or_path  /data/opensource-model/Qwen2-7B-Instruct/ \
+    --model_name_or_path  YOUR_MODEL_PATH/Qwen2-7B-Instruct/ \
     --dataset all \
     --dataset_dir ./data/toys/1/llm_data \
     --template qwen \
@@ -42,7 +42,7 @@ CUDA_VISIBLE_DEVICES=0 llamafactory-cli train \
     --plot_loss \
     --bf16 \
 
-rm -rf ./checkpoint_before/checkpoint-*/  #只保留load_best_model_at_end的checkpoint
+rm -rf ./checkpoint_before/checkpoint-*/  # Only keep the load_best_model_at_end checkpoint
 
     
 

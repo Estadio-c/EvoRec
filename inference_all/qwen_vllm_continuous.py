@@ -18,7 +18,7 @@ def generate(model_name,data_path,batch,max_new_tokens,save_name,lora_path):
         for line in f:
             data.append(json.loads(line))
             
-    print('data的数量是{}'.format(len(data)))
+    print('Number of data samples: {}'.format(len(data)))
     all_len = len(data)
     num = int(all_len/batch)
     llm = vllm.LLM(

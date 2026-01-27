@@ -66,7 +66,7 @@ class EarlyStopping:
     def save_checkpoint(self, score, model):
         '''Saves model when validation loss decrease.'''
         if self.verbose:
-            # ({self.score_min:.6f} --> {score:.6f}) # 这里如果是一个值的话输出才不会有问题
+            # ({self.score_min:.6f} --> {score:.6f}) # Output works correctly if this is a single value
             print(f'Validation score increased.  Saving model ...')
         torch.save(model.state_dict(), self.checkpoint_path)
         self.score_min = score
@@ -355,24 +355,24 @@ if __name__ == '__main__':
         r.append(i.split('||'))
 
 
-    #计算edit域的性能
-    print('Ua域上的性能为')
+    # Calculate performance on edit domain
+    print('Performance on Ua domain:')
     hr_1, ndcg_1 = score(r[:args.edit_user], t[:args.edit_user], 1)
     print('hr@1:', hr_1)
     hr_3, ndcg_3 = score(r[:args.edit_user], t[:args.edit_user], 3)
     print('hr@3:', hr_3, 'ndcg@3:', ndcg_3)
     print("*"*30)
     
-    #计算retain域的性能
-    print('retrain域上的性能为')
+    # Calculate performance on retain domain
+    print('Performance on retain domain:')
     hr_1, ndcg_1 = score(r[args.edit_user:], t[args.edit_user:], 1)
     print('hr@1:', hr_1)
     hr_3, ndcg_3 = score(r[args.edit_user:], t[args.edit_user:], 3)
     print('hr@3:', hr_3, 'ndcg@3:', ndcg_3)
     print("*"*30)
 
-    #计算整体性能
-    print('整体性能为')
+    # Calculate overall performance
+    print('Overall performance:')
     hr_1, ndcg_1 = score(r, t, 1)
     print('hr@1:', hr_1)
     hr_3, ndcg_3 = score(r, t, 3)

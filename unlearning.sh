@@ -13,7 +13,7 @@ TEST_LLM_DATA="./data/toys/1/llm_data/edit_after_candidate_test_retain.json"
 
 GPU_ID="0"
 
-# 运行 Python 脚本
+# Run Python script
 python ./unlearning/unlearning.py \
     --before_path "$BEFORE_PATH" \
     --after_path "$AFTER_PATH" \

@@ -3,9 +3,9 @@ export WANDB_DISABLED=true
 output_dir=./checkpoint_update_after
 
 if [ -d "$output_dir" ] && [ "$(ls -A $output_dir)" ]; then
-    echo "文件夹 $output_dir 不为空，正在删除文件..."
+    echo "Directory $output_dir is not empty, deleting files..."
     rm -rf "$output_dir"/*
-    echo "文件夹中的所有文件已删除。"
+    echo "All files in directory deleted."
 fi
 
 CUDA_VISIBLE_DEVICES=4 torchrun --nproc_per_node 1 --master-port=60000 ./update/train.py \
@@ -13,7 +13,7 @@ CUDA_VISIBLE_DEVICES=4 torchrun --nproc_per_node 1 --master-port=60000 ./update/
     --do_train \
     --edit True \
     --adapter_path ./checkpoint_before \
-    --model_name_or_path /data/opensource-model/Qwen2-7B-Instruct/ \
+    --model_name_or_path YOUR_MODEL_PATH/Qwen2-7B-Instruct/ \
     --dataset train_after_1 \
     --eval_dataset train_val_1 \
     --dataset_dir ./unlearning_data \

@@ -9,14 +9,14 @@ echo "" > $log_file
 
 lora_path=../checkpoint_before
 
-# 检查并删除生成文件
+# Check and delete generated file
 if [ -s "$generate_file" ]; then
-    echo "文件 $generate_file 不为空，正在删除..."
+    echo "File $generate_file is not empty, deleting..."
     rm "$generate_file"
-    echo "文件已删除。"
+    echo "File deleted."
 fi
 
-# 执行 qwen_vllm.py 脚本
+# Execute qwen_vllm.py script
 CUDA_VISIBLE_DEVICES=0,1,2,3 python ./qwen_vllm.py \
     --batch 200 \
     --max_len 300 \
@@ -27,10 +27,10 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python ./qwen_vllm.py \
     >> $log_file 2>&1
 
 
-# 打印加载的断点到日志文件
-echo "加载的断点: checkpoint-$i" >> $log_file
+# Log loaded checkpoint to log file
+echo "Loaded checkpoint: checkpoint-$i" >> $log_file
 
-# 执行 metric.py 脚本
+# Execute metric.py script
 python ./metric.py \
     --edit_user 602 \
     --test_file $test_file \
